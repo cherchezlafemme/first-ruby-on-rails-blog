@@ -12,14 +12,17 @@ class ArticlesController < ApplicationController
   end
 
   def new
+    before_action :authenticate_admin!
     @article = Article.new
   end
 
   def edit
+    before_action :authenticate_admin!
     @article = Article.find(params[:id])
   end
 
   def create
+    before_action :authenticate_admin!
     @article = Article.new(article_params)
 
     if @article.save
@@ -30,6 +33,7 @@ class ArticlesController < ApplicationController
   end
 
   def update
+    before_action :authenticate_admin!
     @article = Article.find(params[:id])
 
     if @article.update(article_params)
@@ -40,6 +44,7 @@ class ArticlesController < ApplicationController
   end
 
   def destroy
+    before_action :authenticate_admin!
     @article = Article.find(params[:id])
     @article.destroy
 
