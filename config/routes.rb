@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  devise_for :admins
+  get 'admin' => 'admin#home'
+
   resources :articles do
     resources :comments
   end
